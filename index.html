@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body class="body">
+    <div class="container">
+        <div id="app">
+        <h1>{{ title }}</h1>
+        <p>Мне не подобратб словъ,чтобы описатб боль,которое я испитал</p>
+        <form @submit.prevent="addItem">
+            <input 
+                type="text" 
+                placeholder="Написать ту самую мболь" 
+                v-model="newText"
+            >
+            <button>намписать</button>
+            <p>Опишите свою боль вот в это днивиник: {{ newText }}</p>
+            <h2>Колличевства описанной мболи: {{ getListLength }}</h2>
+        </form>
+        <ul v-if="list.length > 0">
+            <li :class="line" v-for="item in list" :key="item.id">
+            <div  class="both">
+                <p :class="styleText" @click="writeText(item.id)" >{{ item.name, itami }}</p>
+                <input v-show="!item.show" v-on:keyup.enter="writeText(item.id)" type="text" v-model="itami" placeholder="">
+            </div>
+             <p>Ваше id: {{ item.id }}</p>
+             <button :class="color" @click="delItem(item.id)">X</button>
+            </li>
+        </ul>
+        <h2 v-else>Лол а у вас нет боли</h2>
+    </div>
+    </div>
+    
+    
+    <script src="main.js"></script>
+</body>
+</html>
+
+
+
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script> -->
+<!-- <div id="app">
+  <ul>
+    <li v-for="item in list" @click="change(item.id)" v-show="!item.hide">
+     {{item.text}}
+    </li>
+  </ul>
+</div> -->

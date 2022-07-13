@@ -47,12 +47,6 @@ const app = {
                 localStorage.list = JSON.stringify(this.list)
             },
             deep: true
-        },
-        show:{
-            handler(bool){
-                localStorage.show = JSON.stringify(this.show)
-            },
-            deep:true
         }
     },
     
@@ -61,6 +55,7 @@ const app = {
             this.list.push({
                 id: id++,
                 name: this.newText,
+                show: true
             })
             this.newText = ''
         },
@@ -76,14 +71,10 @@ const app = {
             } 
         },
         writeText(id){
-            const loc = localStorage.show
-            if(loc) {
-                this.show = JSON.parse(loc);
-            }
             const index = this.list.findIndex(item => item.id == id);
             this.list[index].name = this.itami;
             this.list[index].show = this.list[index].show === true ? false : true;
-            this.itami = ''
+            this.itami = '';
         }
     }
 }

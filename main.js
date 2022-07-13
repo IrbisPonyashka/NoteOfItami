@@ -52,11 +52,14 @@ const app = {
     
     methods: {
         addItem() {
-            this.list.push({
-                id: id++,
-                name: this.newText,
-                show: true
-            })
+            if(this.newText !== ''){
+                    this.list.push({
+                    id: id++,
+                    name: this.newText,
+                    show: true
+                })
+            }
+            
             this.newText = ''
         },
         delItem(id) {

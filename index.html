@@ -27,7 +27,7 @@
             <li :class="line" v-for="item in list" :key="item.id">
             <div  class="both">
                 <p :class="styleText" @click="writeText(item.id)" >{{ item.name, itami }}</p>
-                <input v-show="!item.show" v-on:keyup.enter="writeText(item.id)" type="text" v-model="itami" placeholder="">
+                <input v-if="!item.show" v-on:keyup.enter="writeText(item.id)" type="text" v-model="itami" placeholder="">
             </div>
              <p>Ваше id: {{ item.id }}</p>
              <button :class="color" @click="delItem(item.id)">X</button>
